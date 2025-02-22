@@ -33,7 +33,7 @@ namespace MyUtil {
     ///<summary>リストをシャッフルする</summary>
     public static List<T> MyShuffle<T>(this IEnumerable<T> list) => [.. list.OrderBy(i => Guid.NewGuid())];
     ///<summary>NonNullなリストをNullableなリストにする</summary>
-    public static List<T?> MyNullable<T>(this IEnumerable<T> list) where T : notnull => [.. list.OfType<T?>()];
+    public static List<T?> MyNullable<T>(this IEnumerable<T> list) where T : struct => [.. list.OfType<T?>()];
     ///<summary>NullableなリストをNonNullなリストにする null要素は除外される</summary>
     public static List<T> MyNonNull<T>(this IEnumerable<T?> list) where T : class => [.. list.OfType<T>()];
     ///<summary>NullableなリストをNonNullなリストにする null要素は除外される</summary>
